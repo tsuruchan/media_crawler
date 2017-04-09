@@ -33,7 +33,7 @@ class DatabasePipeline(object):
 
         # PostgreSQLサーバーへ接続
         try:
-            self.c = psycopg2.connect('host=localhost dbname=big_data_sql user=postgres')
+            self.c = psycopg2.connect('')
         except:
             print("Connection Error")
 
@@ -59,15 +59,15 @@ class DatabasePipeline(object):
             # URLの重複チェック
             self.cur.execute('select url from gunosy where url = (%s)', [item['url']])
             if self.cur.fetchone() is None:
-                print("★★★★ insert SQL")
+                print("★★★ insert SQL")
                 self.cur.execute('insert into gunosy values (%s, %s, %s, %s, %s, %s, %s, %s)',
                                  [item["title"], item["url"], item["tag"], item["date"], item["publisher"],
                                   ','.join(item["images"]), item["top_image"], item["body"]])
             else:
-                print("★★★★ 重複だよ！!")
+                print("★★★ Duplication!!")
                 pass
         else:
-            print("★★★★ 重複だよ！")
+            print("★★★ Duplication!")
             pass
 
     def close_spider(self, spider):
