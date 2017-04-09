@@ -66,7 +66,7 @@ DOWNLOAD_DELAY = 1
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     'media_crawler.pipelines.ValidationPipeline': 100,
-    'media_crawler.pipelines.DatabasePipeline': 300,
+#    'media_crawler.pipelines.DatabasePipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
